@@ -84,7 +84,7 @@ resource "aws_db_subnet_group" "main_db_subnet_group" {
 resource "aws_security_group" "main_db_access" {
   name        = "${var.rds_instance_identifier}-access"
   description = "Allow access to the database"
-  vpc_id      = "${var.rds_vpc_id}"
+  vpc_id      = "${var.production-vpc.id}"
 
   tags = "${merge(var.tags, map("Name", format("%s", var.rds_instance_identifier)))}"
 }
